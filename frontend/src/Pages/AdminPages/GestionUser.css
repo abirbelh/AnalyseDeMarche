@@ -1,0 +1,179 @@
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #213C55;
+  margin-top: 70px;
+}
+
+.responsive-table li {
+  border-radius: 3px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.responsive-table .table-header {
+  background-color: #AEBDD3;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.responsive-table .table-row {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+}
+
+.responsive-table .col-1 {
+  flex-basis: 10%;
+}
+
+.responsive-table .col-2 {
+  flex-basis: 30%;
+}
+
+.responsive-table .col-3 {
+  flex-basis: 30%;
+}
+
+.responsive-table .col-4 {
+  flex-basis: 30%;
+}
+
+.delete-btn {
+  background-color: #e0cbcb;
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: -40px;
+}
+
+.delete-btn:hover {
+  background-color: #ff3333;
+}
+
+@media all and (max-width: 767px) {
+  .responsive-table .table-header {
+      display: none;
+  }
+  .responsive-table li {
+      display: block;
+  }
+  .responsive-table .col {
+      flex-basis: 100%;
+  }
+  .responsive-table .col {
+      display: flex;
+      padding: 10px 0;
+  }
+  .responsive-table .col:before {
+      color: #213C55;
+      padding-right: 10px;
+      content: attr(data-label);
+      flex-basis: 50%;
+      text-align: right;
+  }
+}
+
+.container ul {
+  margin-top: 60px;
+}
+
+.add-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.add-btn:hover {
+  background-color: #45a049;
+}
+
+.add-user-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.add-user-box h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #213C55;
+}
+
+.add-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-user-form input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: black;
+ 
+}
+#mail{
+  color: black;
+}
+
+input{
+  color: #213C55;
+}
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.submit-btn, .cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background-color: #008CBA;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #007B9A;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f;
+}

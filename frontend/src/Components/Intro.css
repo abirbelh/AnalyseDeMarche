@@ -1,0 +1,37 @@
+.Line1 {
+    width: 100%;
+    height: 0px;
+    border: 1px black solid;
+}
+
+.ProposDeNotreSite {
+    width: 722px;
+    height: 93px;
+    color: black;
+    font-size: 48px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin-top: 30px;
+    margin-left: 570px;
+}
+
+.Line3 {
+    width: 100%;
+    height: 0;
+    border: 1px black solid;
+    top: 250px;
+}
+
+.intro{
+    width: 1157px;
+    height: 204px;
+    text-align: center;
+    color: #213C55;
+    font-size: 24px;
+    font-family: 'Inter';
+    font-weight: 500;
+    word-wrap: break-word;
+    margin-left: 270px;
+}

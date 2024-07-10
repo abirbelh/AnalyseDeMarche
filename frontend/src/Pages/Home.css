@@ -1,0 +1,34 @@
+html {
+    scroll-behavior: smooth;
+  }
+  body, html {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+.intro-container{
+    margin-top: 70px;
+}
+.Line  {
+    width: 100%;
+    height: 0;
+    border: 1px black solid;
+}
+.actualites-container h2{
+    width: 722px;
+    height: 93px;
+    color: black;
+    font-size: 53px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin-top: 70px;
+    margin-left: 590px;
+}
+.home-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }

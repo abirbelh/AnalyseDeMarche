@@ -1,0 +1,64 @@
+.card2 {
+    box-sizing: border-box;
+    width: 90%;
+    height: auto;
+    background: rgba(174, 189, 211, 0.8); /* Adjust the alpha value as needed */
+    border: 1px solid white;
+    box-shadow: 8px 7px 30px #4C5C75;
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+    flex-direction: column;
+    gap: 70px;
+    margin-left: 80px;
+    margin-top: 50px;
+    margin-bottom: 50px
+    
+}
+
+
+.card2 img {
+    height: 80px;
+    width: 200px;
+}
+
+.card3 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.card2:hover {
+    border: 3px solid #213C55;
+    transform: scale(1.05);
+}
+
+
+
+.card3 h1 {
+    font-size: 40px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #213C55;
+    margin-top: 60px;
+}
+
+.card3 p {
+    font-size: 30px;
+    color: #4C5C75;
+}
+.liste{
+    border: 1px black;
+    margin-bottom: 40px ;
+    height: auto;
+    width: 1400px;
+    margin-left: -75px;
+    margin-top: 70px;
+}
