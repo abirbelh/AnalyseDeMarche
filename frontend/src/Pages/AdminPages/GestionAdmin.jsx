@@ -11,9 +11,17 @@ const GestionAdmin = () => {
     setActualites(storedActualites);
   }, []);
 
-  const ajouterActualite = (title, paragraph, image, style) => {
+  const ajouterActualite = (title, paragraph, image, style, file) => {
     if (window.confirm("Êtes-vous sûr de vouloir ajouter cette nouvelle actualité ?")) {
-      const nouvellesList = [...actualites, { title, paragraph, image, style, date: new Date() }];
+      const nouvelleActualite = { 
+        title, 
+        paragraph, 
+        image, 
+        style, 
+        file: file ? { name: file.name, url: URL.createObjectURL(file) } : null,
+        date: new Date() 
+      };
+      const nouvellesList = [...actualites, nouvelleActualite];
       setActualites(nouvellesList);
       localStorage.setItem('actualites', JSON.stringify(nouvellesList));
     }

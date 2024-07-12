@@ -5,6 +5,7 @@ const AjouterActualite = ({ ajouterActualite }) => {
   const [title, setTitle] = useState('');
   const [paragraph, setParagraph] = useState('');
   const [image, setImage] = useState(null);
+  const [file, setFile] = useState(null);
   const [textColor, setTextColor] = useState('#000000');
   const [fontSize, setFontSize] = useState('16');
   const [isBold, setIsBold] = useState(false);
@@ -19,22 +20,29 @@ const AjouterActualite = ({ ajouterActualite }) => {
     }
   };
 
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = () => {
     if (title.trim() === '' || paragraph.trim() === '') {
       alert('Veuillez entrer un titre et un paragraphe !');
       return;
     }
-    
+
     const style = {
       color: textColor,
       fontSize: `${fontSize}px`,
       fontWeight: isBold ? 'bold' : 'normal'
     };
 
-    ajouterActualite(title.trim(), paragraph.trim(), image, style);
+    ajouterActualite(title.trim(), paragraph.trim(), image, style, file);
     setTitle('');
     setParagraph('');
     setImage(null);
+    setFile(null);
     setTextColor('#000000');
     setFontSize('16');
     setIsBold(false);
@@ -80,13 +88,19 @@ const AjouterActualite = ({ ajouterActualite }) => {
           B
         </button>
       </div>
-      <input 
-        type="file" 
-        accept="image/*" 
+      <input
+        type="file"
+        accept="image/*"
         onChange={handleImageChange}
         className="image-input"
       />
       {image && <img src={image} alt="Aperçu" className="image-preview" />}
+      <input
+        type="file"
+        onChange={handleFileChange}
+        className="file-input"
+      />
+      {file && <p>Fichier sélectionné: {file.name}</p>}
       <button onClick={handleSubmit} className="submit-button">Ajouter Actualité</button>
     </div>
   );

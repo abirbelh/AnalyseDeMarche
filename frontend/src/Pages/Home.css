@@ -1,34 +1,58 @@
-html {
-    scroll-behavior: smooth;
-  }
-  body, html {
-    overflow-x: hidden;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-.intro-container{
-    margin-top: 70px;
+/* Home.css */
+
+.actualites-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f5f5f5;
+  height: 900px;
 }
-.Line  {
-    width: 100%;
-    height: 0;
-    border: 1px black solid;
+
+.actualites-container h2 {
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 53px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 70px;
+  margin-bottom: 30px;
 }
-.actualites-container h2{
-    width: 722px;
-    height: 93px;
-    color: black;
-    font-size: 53px;
-    font-family: 'Inter';
-    font-style: italic;
-    font-weight: 400;
-    word-wrap: break-word;
-    margin-top: 70px;
-    margin-left: 590px;
+
+.actualite-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
-.home-container {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
+
+.actualite-group > * {
+  flex: 1;
+  gap: -50px;
+  box-sizing: border-box; /* To include padding and border in the width and height calculations */
+  background: rgb(119, 27, 27); /* You can adjust the styling here */
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.actualite-slide {
+  padding: 10px;
+  box-sizing: border-box;
+  
+}
+
+/* Slider Navigation */
+.slick-prev:before, .slick-next:before {
+  color: black;
+}
+
+/* Slider Dots */
+.slick-dots li button:before {
+  color: black;
+ 
+}
+ .intro-container{
+  margin-top: 40px;
+ }
