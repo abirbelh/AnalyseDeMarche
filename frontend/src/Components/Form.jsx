@@ -1,32 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Form.css';
-import { Link } from 'react-router-dom';
 
-function Form() {
-    return (
-        <div className="background">
+const Form = () => {
+  const [email, setEmail] = useState('');
+  const [motDePasse, setMotDePasse] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate(); // Correct usage of useNavigate
 
-            <form>
-                <h3>Connexion</h3>
-                <label htmlFor="username" id='user1'>Nom Utilisateur</label>
-                <input type="text" placeholder="nom utilisateur" id="username" />
-                <label htmlFor="password">Mot de passe</label>
-                <input type="password" placeholder="mot de passe" id="password" />
-                <button>se connecter</button>
-                <div className="VousNAvezPasDeCompteInscrivezVous">
-                    <span>Vous n'avez pas de compte ?</span>
-                    <span>&nbsp;</span>
-                    <span><Link to='/signin'> Inscrivez-vous</Link></span>
-                </div>
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:3001/api/utilisateurs/login', {
+        email,
+        motDePasse,
+      });
+      const { token } = response.data;
+      localStorage.setItem('token', token);
+      navigate('/'); // Use navigate function to redirect
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        setErrorMessage("Ce compte n'existe pas");
+      } else {
+        setErrorMessage('Une erreur s\'est produite. Veuillez réessayer.');
+      }
+    }
+  };
 
-                <div className="social">
-                    <div className="go">Google</div>
-                    <div className="fb">Facebook</div>
-                </div>
-            </form>
-        </div>
-    );
-}
+  return (
+    <div>
+      <form onSubmit={handleLogin}>
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          value={motDePasse}
+          onChange={(e) => setMotDePasse(e.target.value)}
+          required
+        />
+        <button type="submit">Se connecter</button>
+      </form>
+      {errorMessage && (
+        <p style={{ color: 'red' }}>{errorMessage}</p>
+      )}
+      <p>Pas encore de compte ? <Link to="/signup">Inscrivez-vous ici</Link></p>
+    </div>
+  );
+};
 
 export default Form;
-
