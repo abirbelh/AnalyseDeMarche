@@ -49,5 +49,5 @@ const loadPerformanceFinanciereData = async (filePath) => {
 };
 
 // Specify the path to your Excel file
-const filePath = 'C:/Users/abir0/Documents/VisionAnalytique/backend/Imports/perfomanceFinanciere.xlsx';
+const filePath = 'C:/Users/aya20/Documents/GitHub/AnalyseDeMarche/backend/Imports/perfomanceFinanciere.xlsx';
 loadPerformanceFinanciereData(filePath);

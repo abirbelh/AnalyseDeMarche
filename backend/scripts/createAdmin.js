@@ -5,7 +5,7 @@ const Utilisateur = require('../models/utilisateurModel'); // Adjust the path as
 
 const createAdmin = async () => {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/visionAnalytique', { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect('mongodb://localhost:27017/visionAnalytique', { useNewUrlParser: true, useUnifiedTopology: true });
     const hashedPassword = await bcrypt.hash('adminpassword123', 10);
     const adminUser = new Utilisateur({
       nomUtilisateur: 'admin',

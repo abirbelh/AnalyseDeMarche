@@ -1,5 +1,5 @@
 // node scripts/loadCompanies.js
-
+require('dotenv').config()
 const mongoose = require('mongoose');
 const xlsx = require('xlsx');
 const Entreprise = require('../models/entrepriseModel');
@@ -9,7 +9,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/visionAnalytique', {
     socketTimeoutMS: 45000,
 });
 
-const workbook = xlsx.readFile('C:/Users/abir0/Documents/VisionAnalytique/backend/Imports/Entreprise.xlsx');
+const workbook = xlsx.readFile('C:/Users/aya20/Documents/GitHub/AnalyseDeMarche/backend/Imports/Entreprise.xlsx');
 const sheetName = workbook.SheetNames[0];
 const worksheet = workbook.Sheets[sheetName];
 

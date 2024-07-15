@@ -60,7 +60,8 @@ function Home() {
             
             <ScrollReveal>
                 <div className="actualites-container">
-                    <h2>Actualités Récentes</h2>
+                    <h2>ACTUALITÉS ET ARTICLES</h2>
+                    <h4> Toujours à jour avec nos dernières actualités et articles</h4>
                     <Slider {...settings}>
                         {actualites.map((actualite, index) => (
                             <div key={index} className="actualite-slide">
