@@ -13,7 +13,7 @@ const adminMiddleware = require('../middleware/adminMiddleware');
 router.post('/', upload.single('file'), authMiddleware, adminMiddleware, actualiteController.createActualite);
 
 // GET /api/actualites - Retrieve all actualites
-router.get('/',authMiddleware, adminMiddleware,  actualiteController.getActualites);
+router.get('/',  actualiteController.getActualites);
 
 // GET /api/actualites - Retrieve actualite by id
 router.get('/:id',authMiddleware, adminMiddleware,  actualiteController.getActualiteById);

@@ -7,38 +7,28 @@ import FormSignIn from '../Components/FormSignIn';
 function SignIn() {
   return (
     <div id="header-wrapper2">
-    <div id="header2" class="container2">
-       
-            <a href="/"><img src={logo} alt="Logo"  id='logo2'/></a>
-      
-
+      <div id="header2" className="container2">
+        <a href="/"><img src={logo} alt="Logo"  id='logo2'/></a>
         <div id="menu2">
-            <ul>
-
-                <li><Link to="/">Acceuil</Link></li>                                                          
-                <li><Link to="/visualisation" >Dashbord</Link></li>
-                <li class="active2"><Link to="/login">Connexion</Link></li>
-                
-            </ul>
+          <ul>
+            <li><Link to="/">Acceuil</Link></li>                                                          
+            <li><Link to="/visualisation" >Dashbord</Link></li>
+            <li className="active2"><Link to="/login">Connexion</Link></li>
+          </ul>
         </div>
-    </div>
+      </div>
 
-    <div id="banner-wrapper2">
-        <div id="banner2" class="container2">
-            <div class="title2">
-                <h2> Créer un compte </h2>
-                <span class="byline2"> Explorez nos fonctionnalités exclusives dès maintenant en créant votre compte !</span>
-            </div>
-
-
-      
-            <div className='form-container2'><FormSignIn/></div>                   
-            
-           
+      <div id="banner-wrapper2">
+        <div id="banner2" className="container2">
+          <div className="title2">
+            <h2> Créer un compte </h2>
+            <span className="byline2"> Explorez nos fonctionnalités exclusives dès maintenant en créant votre compte !</span>
+          </div>
+          <div className='form-container2'><FormSignIn/></div>                   
         </div>
+      </div>
     </div>
-   
-</div>
   );
 }
- export default SignIn ;
+
+export default SignIn;

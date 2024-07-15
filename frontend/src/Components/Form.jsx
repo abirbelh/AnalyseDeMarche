@@ -44,7 +44,7 @@ const Form = () => {
       {errorMessage && (
         <p style={{ color: 'red' }}>{errorMessage}</p>
       )}
-      <p>Pas encore de compte ? <Link to="/signup">Inscrivez-vous ici</Link></p>
+      <p>Pas encore de compte ? <Link to="/signin">Inscrivez-vous ici</Link></p>
     </div>
   );
 };
