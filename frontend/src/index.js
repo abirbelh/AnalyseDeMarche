@@ -16,6 +16,7 @@ import SignIn from './Pages/SignIn.jsx';
 import Home from './Pages/Home.jsx';
 import GestionAdmin from './Pages/AdminPages/GestionAdmin.jsx';
 import GestionUser from './Pages/AdminPages/GestionUser.jsx';
+import Admin from './Pages/AdminPages/Admin.jsx';
 
 
 
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/gestion/user",
     element: <GestionUser/>
+  },
+  {
+    path: "/admin",
+    element: <Admin/>
   },
 ]);
 

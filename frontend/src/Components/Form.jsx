@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Form.css';
@@ -7,7 +7,7 @@ const Form = () => {
   const [email, setEmail] = useState('');
   const [motDePasse, setMotDePasse] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate(); // Correct usage of useNavigate
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,9 +16,10 @@ const Form = () => {
         email,
         motDePasse,
       });
-      const { token } = response.data;
+      const { token, user } = response.data;
       localStorage.setItem('token', token);
-      navigate('/'); // Use navigate function to redirect
+      localStorage.setItem('user', JSON.stringify(user));
+      navigate('/');
     } catch (error) {
       if (error.response && error.response.status === 404) {
         setErrorMessage("Ce compte n'existe pas");
@@ -31,7 +32,13 @@ const Form = () => {
   return (
     <div>
       <form onSubmit={handleLogin}>
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
         <input
           type="password"
           placeholder="Mot de passe"

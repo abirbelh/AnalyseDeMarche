@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FormSignIn.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Make sure to install axios: npm install axios
+import axios from 'axios';
 
 function FormSignIn() {
   const [username, setUsername] = useState('');
@@ -16,16 +16,15 @@ function FormSignIn() {
 
     try {
       const response = await axios.post('http://localhost:3001/api/utilisateurs/signup', {
-        username,
+        nomUtilisateur: username,
         email,
-        password
+        motDePasse: password
       });
 
-      if (response.data.success) {
-        alert('Compte créé avec succès!');
-        navigate('/login');
-      } else {
-        setError('Une erreur est survenue lors de la création du compte.');
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        navigate('/');
       }
     } catch (error) {
       if (error.response && error.response.data) {
@@ -34,11 +33,6 @@ function FormSignIn() {
         setError('Une erreur de connexion est survenue.');
       }
     }
-
-    // Clear form
-    setUsername('');
-    setEmail('');
-    setPassword('');
   };
 
   return (

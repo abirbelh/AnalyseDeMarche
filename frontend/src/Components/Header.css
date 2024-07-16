@@ -149,7 +149,7 @@ ul.actions li {
 #menu{
     position: absolute;
    margin-top: -74px;
-   margin-left: 670px;
+   margin-left: 560px;
    display: flex;
    flex-direction: column;
    width: 2000px;

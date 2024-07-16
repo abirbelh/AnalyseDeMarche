@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Slider from 'react-slick';
 import Header from '../Components/Header';
 import Intro from '../Components/Intro';
@@ -7,16 +9,24 @@ import RESSR from '../Components/RESSR';
 import ListeActualite from '../Components/Admin/ListeActualité';
 import ScrollReveal from '../Components/ScrollReveal';
 import './Home.css';
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
     const [actualites, setActualites] = useState([]);
 
     useEffect(() => {
-        const storedActualites = JSON.parse(localStorage.getItem('actualites')) || [];
-        setActualites(storedActualites);
+        fetchActualites();
     }, []);
+
+    const fetchActualites = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/api/actualites');
+            setActualites(response.data);
+        } catch (error) {
+            console.error('Error fetching actualites:', error);
+        }
+    };
 
     const settings = {
         dots: true,
@@ -48,26 +58,26 @@ function Home() {
         <div className="home-container">
             <ScrollReveal>
                 <div className='header-container'>
-                    <Header/>
+                    <Header />
                 </div>
             </ScrollReveal>
 
             <ScrollReveal>
                 <div className='intro-container'>
-                    <Intro/>
+                    <Intro />
                 </div>
             </ScrollReveal>
-            
+
             <ScrollReveal>
                 <div className="actualites-container">
                     <h2>ACTUALITÉS ET ARTICLES</h2>
-                    <h4> Toujours à jour avec nos dernières actualités et articles</h4>
+                    <h4>Toujours à jour avec nos dernières actualités et articles</h4>
                     <Slider {...settings}>
                         {actualites.map((actualite, index) => (
                             <div key={index} className="actualite-slide">
-                                <ListeActualite 
-                                    actualites={[actualite]} 
-                                    showDeleteButton={false} 
+                                <ListeActualite
+                                    actualites={[actualite]}
+                                    showDeleteButton={false}
                                     isHomePage={true}
                                 />
                             </div>
@@ -78,18 +88,19 @@ function Home() {
 
             <div className="Line"></div>
             <div className='ressources'>
-            <ScrollReveal>
-                <div className="ressourcel-container">
-                    <RESSL/>
-                </div>
-            </ScrollReveal>
+                <ScrollReveal>
+                    <div className="ressourcel-container">
+                        <RESSL />
+                    </div>
+                </ScrollReveal>
 
-            <ScrollReveal>
-                <div className="ressource2-container">
-                    <RESSR/>
-                </div>
-            </ScrollReveal>
-        </div></div>
+                <ScrollReveal>
+                    <div className="ressource2-container">
+                        <RESSR />
+                    </div>
+                </ScrollReveal>
+            </div>
+        </div>
     );
 }
 

@@ -4,24 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');; 
 
 
-// Signup
-exports.signup = async (req, res) => {
-  const { nomUtilisateur, email, motDePasse, role } = req.body;
-  try {
-    const hashedPassword = await bcrypt.hash(motDePasse, 10);
-    const utilisateur = new Utilisateur({
-      nomUtilisateur,
-      email,
-      motDePasse: hashedPassword,
-      role: 'client' // Default
-    });
-    await utilisateur.save();
-    res.status(201).json({ message: 'Utilisateur created!' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 // Login
 exports.login = async (req, res) => {
   const { email, motDePasse } = req.body;
@@ -39,11 +21,58 @@ exports.login = async (req, res) => {
       'your_jwt_secret',
       { expiresIn: '1h' }
     );
-    res.status(200).json({ token });
+    res.status(200).json({ token, user: { nomUtilisateur: utilisateur.nomUtilisateur, role: utilisateur.role } });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
+// Signup
+exports.signup = async (req, res) => {
+  const { nomUtilisateur, email, motDePasse } = req.body;
+  try {
+    const existingUser = await Utilisateur.findOne({ email });
+    if (existingUser) {
+      return res.status(409).json({ error: 'Cet email est déjà utilisé.' });
+    }
+
+    const hashedPassword = await bcrypt.hash(motDePasse, 10);
+    const utilisateur = new Utilisateur({
+      nomUtilisateur,
+      email,
+      motDePasse: hashedPassword,
+      role: 'client' // Default
+    });
+    await utilisateur.save();
+    const token = jwt.sign(
+      { utilisateurId: utilisateur._id, role: utilisateur.role },
+      'your_jwt_secret',
+      { expiresIn: '1h' }
+    );
+    res.status(201).json({ message: 'Utilisateur created!', token, user: { nomUtilisateur: utilisateur.nomUtilisateur, role: utilisateur.role } });
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      res.status(400).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'Une erreur est survenue lors de la création du compte.' });
+    }
+  }
+};
+
+
+
+exports.getCurrentUser = async (req, res) => {
+  try {
+    const utilisateur = await Utilisateur.findById(req.utilisateurId).select('-motDePasse');
+    if (!utilisateur) {
+      return res.status(404).json({ message: 'Utilisateur not found!' });
+    }
+    res.status(200).json(utilisateur);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 // CRUD operations (only for admin)
 exports.addAdmin = async(req, res) =>{
