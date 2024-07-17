@@ -16,7 +16,7 @@ const Header = () => {
                     const response = await axios.get('http://localhost:3001/api/utilisateurs/me', {
                         headers: { Authorization: `Bearer ${token}` }
                     });
-                    setUser(response.data); // Assuming response.data contains user info like { nomUtilisateur, role }
+                    setUser(response.data);
                 } catch (error) {
                     console.error('Error fetching user info:', error);
                     if (error.response && error.response.status === 401) {
@@ -32,7 +32,7 @@ const Header = () => {
     return (
         <div id="header-wrapper">
             <div id="header" className="container">
-                <a href="#"><img src={logo} alt="Logo" id='logo' /></a>
+                <a href="/"><img src={logo} alt="Logo" id='logo' /></a>
                 <div id="menu">
                     <ul>
                         <li><Link to="/">Accueil</Link></li>

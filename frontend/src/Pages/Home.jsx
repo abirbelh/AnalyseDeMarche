@@ -14,9 +14,11 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
     const [actualites, setActualites] = useState([]);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         fetchActualites();
+        fetchUserInfo();
     }, []);
 
     const fetchActualites = async () => {
@@ -25,6 +27,20 @@ function Home() {
             setActualites(response.data);
         } catch (error) {
             console.error('Error fetching actualites:', error);
+        }
+    };
+
+    const fetchUserInfo = async () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const response = await axios.get('http://localhost:3001/api/utilisateurs/me', {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setUser(response.data);
+            } catch (error) {
+                console.error('Error fetching user info:', error);
+            }
         }
     };
 
@@ -59,6 +75,16 @@ function Home() {
             <ScrollReveal>
                 <div className='header-container'>
                     <Header />
+                    {user && (
+                        <div className="user-info">
+                            <span>Bienvenue, {user.nomUtilisateur}</span>
+                            {user.role === 'admin' && (
+                                <Link to="/admin" className="admin-button">
+                                    Admin Panel
+                                </Link>
+                            )}
+                        </div>
+                    )}
                 </div>
             </ScrollReveal>
 

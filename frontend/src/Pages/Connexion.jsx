@@ -6,10 +6,10 @@ import Form from '../Components/Form';
 
 const Connexion = () => {
     return (
-        <div id="header-wrapper1">
-            <div id="header1" className="container1">
-                <a href="/"><img src={logo} alt="Logo" id='logo1'/></a>
-                <div id="menu1">
+        <div id="header-wrapper2">
+            <div id="header2" className="container2">
+                <a href="/"><img src={logo} alt="Logo" id='logo2'/></a>
+                <div id="menu2">
                     <ul>
                         <li><Link to="/">Accueil</Link></li>
                         <li><Link to="/visualisation">Dashboard</Link></li>
@@ -17,14 +17,14 @@ const Connexion = () => {
                 </div>
             </div>
 
-            <div id="banner-wrapper1">
-                <div id="banner1" className="container1">
-                    <div className="title1">
+            <div id="banner-wrapper2">
+                <div id="banner2" className="container2">
+                    <div className="title2">
                         <h2>Connectez-vous Sur votre Compte !</h2>
-                        <span className="byline1">Connectez-vous à votre compte sur notre site web pour accéder à notre modèle IA exclusif.</span>
+                        <span className="byline2">Connectez-vous à votre compte sur notre site web pour accéder à notre modèle IA exclusif.</span>
                     </div>
 
-                    <div className='form-connexion'>
+                    <div className='form-connexion2'>
                         <Form />
                     </div>
                 </div>

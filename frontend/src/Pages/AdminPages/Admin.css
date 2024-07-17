@@ -1,0 +1,396 @@
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+p, ol, ul {
+    margin-top: 0;
+}
+
+ol, ul {
+    padding: 0;
+    list-style: none;
+}
+
+p {
+    line-height: 180%;
+}
+
+a {
+    color: #ee0000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.container1 {
+    overflow: hidden;
+    margin: 0em auto;
+}
+
+/* Image Styles */
+.image1 {
+    display: inline-block;
+}
+
+.image1 img {
+    display: block;
+    width: 100%;
+}
+
+.image-full1 {
+    display: block;
+    width: 100%;
+    margin: 0 0 2em 0;
+}
+
+.image-left1 {
+    float: left;
+    margin: 0 2em 2em 0;
+}
+
+.image-centered1 {
+    display: block;
+    margin: 0 0 2em 0;
+}
+
+.image-centered1 img {
+    margin: 0 auto;
+    width: auto;
+}
+
+/* List Styles */
+ul.actions1 li {
+    display: inline-block;
+    padding: 0em 0.50em;
+}
+.b{
+    display: flex;
+    flex-direction: column;
+    margin-top: -30px;
+    margin-left: -10px;
+}
+
+/* Button Style */
+.button1 {
+    display: inline-block;
+    padding: 1.40em 3em;
+    letter-spacing: 0.10em;
+    background: #f3cc2f;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1em;
+    color: #3f0900;
+    transition: all 0.3s ease;
+}
+
+.button-alt1 {
+    padding: 1em 2em;
+    border-color: rgba(0.1,0.2,0,.8);
+}
+
+.button1:hover {
+    background: transparent; /* Make background transparent */
+    color: #f3cc2f; /* Ensure text color is still visible */
+    border: 2px solid #b6b1b0; /* Add border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    font-size: 2em;
+}
+
+/* Heading Titles */
+.title1 {
+    margin-bottom: 3em;
+}
+
+.title1 h2 {
+    font-size: 2.7em;
+    color: white;
+}
+
+.title1 .byline1 {
+    font-size: 1.3em;
+    color: rgba(255,255,255,0.60);
+}
+
+/* Wrapper */
+#wrapper1 {
+    position: relative;
+    padding: 5em 0em 7em 0em;
+    background: #FFF;
+}
+
+/* Header */
+
+#header-wrapper1 {
+    position: fixed;  /* Change from relative to fixed */
+    top: 0;
+    left: 0;
+    padding: 0;  /* Remove padding */
+    background: #111111 url(pic13.png) no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;  /* Use viewport height instead of fixed pixels */
+    overflow-y: auto;  /* Allow scrolling if content is taller than the viewport */
+}
+
+#header1 {
+    position: relative;
+    padding: 2em 2em;  /* Reduce padding and add horizontal padding */
+    z-index: 10;  /* Ensure it's above other elements */
+}
+
+.glowing-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+   /* Remove margins */
+    
+}
+
+/* Logo */
+#logo1 {
+    position: absolute;
+    top: 3.6em;
+    left: 0;
+    height: 50px;
+    width: 140px;
+}
+
+
+
+/* Banner */
+#banner-wrapper1 {
+    padding: 4em 0em;
+    background: rgba(0,0,0,0.5);
+    margin-bottom: 40px;
+    margin-top: 65px;
+}
+
+#banner1 {
+    text-align: center;
+}
+
+#banner1 .title1 h2 {
+    font-size: 4em;
+}
+
+#banner1 .title1 .byline1 {
+    font-size: 2em;
+}
+
+#banner1 .button1 {
+    margin-top: 2em;
+    padding: 1.40em 3em;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.banner1 {
+    margin-bottom: 5em;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+:root {
+  --glow-color: #4C5C75;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+
+.glowing-btn {
+  position: relative;
+  color: var(--glow-color);
+  cursor: pointer;
+  height: 50px;
+  width: 180px;
+  margin-bottom: 100px;
+  margin-left: 34px;
+  margin-top: -5px;
+  border: 0.15em solid var(--glow-color);
+  border-radius: 0.45em;
+  background: none;
+  perspective: 2em;
+  font-family: "Raleway", sans-serif;
+  font-size: 1em;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-align: center; /* Center text horizontally */
+  vertical-align: middle; /* Center text vertically */
+
+  -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+    0px 0px 0.5em 0px var(--glow-color);
+  -moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+    0px 0px 0.5em 0px var(--glow-color);
+  box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+    0px 0px 0.5em 0px var(--glow-color);
+  animation: border-flicker 2s linear infinite;
+}
+
+.glowing-txt {
+  
+ 
+  -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em var(--glow-color);
+  -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em var(--glow-color);
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
+  animation: text-flicker 3s linear infinite;
+}
+
+.faulty-letter {
+  opacity: 0.5;
+  animation: faulty-flicker 2s linear infinite;
+}
+
+.glowing-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.7;
+  filter: blur(1em);
+  transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+  background: var(--glow-color);
+  pointer-events: none;
+}
+
+.glowing-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: -1;
+  background-color: var(--glow-color);
+  box-shadow: 0 0 2em 0.2em var(--glow-color);
+  transition: opacity 100ms linear;
+}
+
+.glowing-btn:hover {
+  color: rgba(5, 6, 1, 0.8);
+  text-shadow: none;
+  animation: none;
+}
+
+.glowing-btn:hover .glowing-txt {
+  animation: none;
+}
+
+.glowing-btn:hover .faulty-letter {
+  animation: none;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.glowing-btn:hover:before {
+  filter: blur(1.5em);
+  opacity: 1;
+}
+
+.glowing-btn:hover:after {
+  opacity: 1;
+}
+
+@keyframes faulty-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 0.1;
+  }
+  4% {
+    opacity: 0.5;
+  }
+  19% {
+    opacity: 0.5;
+  }
+  21% {
+    opacity: 0.1;
+  }
+  23% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  83% {
+    opacity: 0.4;
+  }
+  87% {
+    opacity: 1;
+  }
+}
+
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  8% {
+    opacity: 0.1;
+  }
+  9% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  72% {
+    opacity: 0.2;
+  }
+  77% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  8% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}

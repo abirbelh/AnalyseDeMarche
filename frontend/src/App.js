@@ -14,6 +14,7 @@ import SignIn from './Pages/SignIn';
 import GestionAdmin from './Pages/AdminPages/GestionAdmin';
 import GestionUser from './Pages/AdminPages/GestionUser';
 import Admin from './Pages/AdminPages/Admin';
+import Index from './Components/Index';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -55,6 +56,7 @@ function App() {
           <Route path="/login" element={<Connexion setUser={setUser} />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/model" element={<ProtectedRoute><AIModel /></ProtectedRoute>} />
+          <Route path="/index" element={<ProtectedRoute><Index /></ProtectedRoute>} />
           <Route path="/*" element={<Error />} />
           <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
           <Route 

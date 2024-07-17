@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './GestionUser.css';
 
 const GestionUser = () => {
@@ -7,26 +8,42 @@ const GestionUser = () => {
     const [newUser, setNewUser] = useState({ username: '', email: '', password: '' });
 
     useEffect(() => {
-        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-        setUsers(storedUsers);
+        getUsers();
     }, []);
 
-    const deleteUser = (index) => {
-        if (window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
-            const updatedUsers = users.filter((_, i) => i !== index);
-            setUsers(updatedUsers);
-            localStorage.setItem('users', JSON.stringify(updatedUsers));
+    const getUsers = async () => {
+        try {
+            const response = await axios.get('/api/utilisateurs');
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
         }
     };
 
-    const addUser = (e) => {
+    const deleteUser = async (id) => {
+        if (window.confirm("Are you sure you want to delete this user?")) {
+            try {
+                await axios.delete(`/api/utilisateurs/${id}`);
+                setUsers(users.filter(user => user._id !== id));
+                console.log('User deleted successfully!');
+            } catch (error) {
+                console.error('Error deleting user:', error);
+            }
+        }
+    };
+
+    const addUser = async (e) => {
         e.preventDefault();
         if (newUser.username && newUser.email && newUser.password) {
-            const updatedUsers = [...users, newUser];
-            setUsers(updatedUsers);
-            localStorage.setItem('users', JSON.stringify(updatedUsers));
-            setNewUser({ username: '', email: '', password: '' });
-            setShowForm(false);
+            try {
+                const response = await axios.post('/api/utilisateurs/signup', newUser);
+                setUsers([...users, response.data.user]);
+                setNewUser({ username: '', email: '', password: '' });
+                setShowForm(false);
+                console.log('User added successfully!');
+            } catch (error) {
+                console.error('Error adding user:', error);
+            }
         }
     };
 
@@ -51,13 +68,10 @@ const GestionUser = () => {
                             onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
                         />
                         <input
-
-                           id='mail'
                             type="email"
                             placeholder="Email"
                             value={newUser.email}
                             onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-                            className="black-placeholder"
                         />
                         <input
                             type="password"
@@ -80,12 +94,12 @@ const GestionUser = () => {
                     <div className="col col-4">Actions</div>
                 </li>
                 {users.map((user, index) => (
-                    <li className="table-row" key={index}>
+                    <li className="table-row" key={user._id}>
                         <div className="col col-1" data-label="ID">{index + 1}</div>
-                        <div className="col col-2" data-label="Nom Utilisateur">{user.username}</div>
+                        <div className="col col-2" data-label="Nom Utilisateur">{user.nomUtilisateur}</div>
                         <div className="col col-3" data-label="Adresse Mail">{user.email}</div>
                         <div className="col col-4" data-label="Actions">
-                            <button onClick={() => deleteUser(index)} className="delete-btn">Supprimer</button>
+                            <button onClick={() => deleteUser(user._id)} className="delete-btn">Supprimer</button>
                         </div>
                     </li>
                 ))}

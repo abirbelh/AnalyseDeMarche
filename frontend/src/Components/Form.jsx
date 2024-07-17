@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Form.css';
@@ -19,19 +19,21 @@ const Form = () => {
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      navigate('/');
-    } catch (error) {
-      if (error.response && error.response.status === 404) {
-        setErrorMessage("Ce compte n'existe pas");
+      if (user.role === 'admin') {
+        navigate('/admin');
       } else {
-        setErrorMessage('Une erreur s\'est produite. Veuillez réessayer.');
+        navigate('/');
       }
+    } catch (error) {
+      console.error('Login error:', error);
+      setErrorMessage('Une erreur s\'est produite. Veuillez réessayer.');
     }
   };
 
   return (
     <div>
       <form onSubmit={handleLogin}>
+        <div className='tous'>
         <input
           type="email"
           placeholder="Email"
@@ -47,13 +49,18 @@ const Form = () => {
           required
         />
         <button type="submit">Se connecter</button>
+         
+         <div className='rq'>
+        {errorMessage && (
+          <p style={{ color: 'red' }}>{errorMessage}</p>
+        )}
+        <p>Pas encore de compte ? <Link to="/signin">Inscrivez-vous ici</Link></p></div>
+        
+        </div>
+
       </form>
-      {errorMessage && (
-        <p style={{ color: 'red' }}>{errorMessage}</p>
-      )}
-      <p>Pas encore de compte ? <Link to="/signin">Inscrivez-vous ici</Link></p>
-    </div>
-  );
+      </div>
+      );
 };
 
-export default Form;
+      export default Form;

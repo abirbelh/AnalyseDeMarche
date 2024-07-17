@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './FormSignIn.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import google from './google.png'
+import fcb from './fcb.png'
 
 function FormSignIn() {
   const [username, setUsername] = useState('');
@@ -68,13 +71,24 @@ function FormSignIn() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        {error && <p className="error-message" style={{color: 'red'}}>{error}</p>}
+        {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
         <button type="submit" className="button2">créer un compte</button>
-        
-        <div className="social1">
-          <div className="go1">Google</div>
-          <div className="fb1">Facebook</div>
+
+        <div className="social1-container">
+         
+          <div className="line"></div>
+           <p className="social1-text">connectez avec vos réseaux sociaux</p>
+          <div className="social1">
+            <Link to="/index" className="go2">
+              <img src={google} alt="Google" className="button-icon" />
+            </Link>
+            <Link to="/index" className="fb2">
+              <img src={fcb} alt="Facebook" className="button-icon" />
+            </Link>
+          </div>
         </div>
+
+
       </form>
     </div>
   );

@@ -1,4 +1,3 @@
-
 h1, h2, h3 {
   margin: 0;
   padding: 0;
@@ -25,52 +24,52 @@ a:hover {
   text-decoration: none;
 }
 
-.container1 {
+.container2 {
   overflow: hidden;
   margin: 0em auto;
   width: 1200px;
 }
 
 /* Image Styles */
-.image1 {
+.image2 {
   display: inline-block;
 }
 
-.image1 img {
+.image2 img {
   display: block;
   width: 100%;
 }
 
-.image-full1 {
+.image-full2 {
   display: block;
   width: 100%;
   margin: 0 0 2em 0;
 }
 
-.image-left1 {
+.image-left2 {
   float: left;
   margin: 0 2em 2em 0;
 }
 
-.image-centered1 {
+.image-centered2 {
   display: block;
   margin: 0 0 2em 0;
 }
 
-.image-centered1 img {
+.image-centered2 img {
   margin: 0 auto;
   width: auto;
 }
 
 /* List Styles */
-ul.actions1 li {
+ul.actions2 li {
   display: inline-block;
   padding: 0em 0.50em;
 }
 
 
 /* Button Style */
-.button1 {
+.button2 {
   display: inline-block;
   padding: 1.40em 3em;
   letter-spacing: 0.10em;
@@ -84,11 +83,11 @@ ul.actions1 li {
   transition: all 0.3s ease;
 }
 
-.button-alt1 {
+.button-alt2 {
   padding: 1em 2em;
   border-color: rgba(0.1,0.2,0,.8);
 }
-.button1:hover {
+.button2:hover {
   background: transparent; /* Make background transparent */
   color: #f3cc2f; /* Ensure text color is still visible */
   border: 2px solid #b6b1b0; /* Add border */
@@ -98,42 +97,42 @@ ul.actions1 li {
 
 
 /* Heading Titles */
-.title1 {
+.title2 {
   margin-bottom: 3em;
 }
 
-.title1 h2 {
+.title2 h2 {
   font-size: 2.7em;
   color: white;
 }
 
-.title1 .byline1 {
+.title2 .byline2 {
   font-size: 1.3em;
   color: rgba(255,255,255,0.60);
 }
 
 /* Wrapper */
-#wrapper1 {
+#wrapper2 {
   position: relative;
   padding: 5em 0em 7em 0em;
   background: #FFF;
 }
 
 /* Header */
-#header-wrapper1 {
+#header-wrapper2 {
   position: relative;
   padding: 5em 0em 0em 0em;
   background: #111111 url(1.png) no-repeat center;
   background-size: cover;
 }
 
-#header1 {
+#header2 {
   position: relative;
   padding: 5em 0em 10em 0em;
 }
 
 /* Logo */
-#logo1 {
+#logo2 {
   position: absolute;
   top: 3.6em;
   left: 0;
@@ -141,30 +140,24 @@ ul.actions1 li {
   width: 140px;
 }
 
-
-
-
 /* Menu */
-#menu1 {
+#menu2 {
   position: absolute;
   top: 3.5em;
- right: 80px;
- 
+  right: 80px;
 }
 
-#menu1 ul {
+#menu2 ul {
   display: inline-block;
- 
 }
 
-#menu1 li {
+#menu2 li {
   display: block;
   float: left;
   text-align: center;
- 
 }
 
-#menu1 li a, #menu li span {
+#menu2 li a, #menu2 li span {
   padding: 1em 1.5em;
   letter-spacing: 1px;
   text-decoration: none;
@@ -173,32 +166,29 @@ ul.actions1 li {
   color: black;
 }
 
-#menu1 .active1 a {
+#menu2 .active2 a {
   background: #f3cc2f;
   border-radius: 6px;
   color: rgba(255,255,255,1);
   color: #3f0900;
 }
-#menu1 ul li a:hover {
+#menu2 ul li a:hover {
   text-decoration: underline; 
   transition: color 0.3s;
 }
 
-
-
 /* Banner */
-#banner-wrapper1 {
+#banner-wrapper2 {
   padding: 4em 0em;
   background: rgba(0,0,0,0.5);
   position: relative;
-  
 }
 
-#banner1 {
+#banner2 {
   text-align: center;
 }
 
-#banner1 .title1 h2 {
+#banner2 .title2 h2 {
   font-size: 4em;
   font-family: 'Inter';
   font-style: italic;
@@ -206,14 +196,13 @@ ul.actions1 li {
   margin-top: 40px;
 }
 
-#banner1 .title1 .byline1 {
+#banner2 .title2 .byline2 {
   font-size: 2em;
   font-family: 'Inter';
   font-style: italic;
-
 }
 
-#banner1 .button1 {
+#banner2 .button2 {
   margin-top: 2em;
   padding: 1.40em 3em;
   border-radius: 6px;
@@ -221,9 +210,10 @@ ul.actions1 li {
   font-size: 1em;
 }
 
-.banner1 {
+.banner2 {
   margin-bottom: 5em;
 }
-.form-connexion{
+
+.form-connexion2 {
   margin-top: 760px;
 }

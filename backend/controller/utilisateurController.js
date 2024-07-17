@@ -31,31 +31,31 @@ exports.login = async (req, res) => {
 exports.signup = async (req, res) => {
   const { nomUtilisateur, email, motDePasse } = req.body;
   try {
-    const existingUser = await Utilisateur.findOne({ email });
-    if (existingUser) {
-      return res.status(409).json({ error: 'Cet email est déjà utilisé.' });
-    }
+      const existingUser = await Utilisateur.findOne({ email });
+      if (existingUser) {
+          return res.status(409).json({ error: 'Cet email est déjà utilisé.' });
+      }
 
-    const hashedPassword = await bcrypt.hash(motDePasse, 10);
-    const utilisateur = new Utilisateur({
-      nomUtilisateur,
-      email,
-      motDePasse: hashedPassword,
-      role: 'client' // Default
-    });
-    await utilisateur.save();
-    const token = jwt.sign(
-      { utilisateurId: utilisateur._id, role: utilisateur.role },
-      'your_jwt_secret',
-      { expiresIn: '1h' }
-    );
-    res.status(201).json({ message: 'Utilisateur created!', token, user: { nomUtilisateur: utilisateur.nomUtilisateur, role: utilisateur.role } });
+      const hashedPassword = await bcrypt.hash(motDePasse, 10);
+      const utilisateur = new Utilisateur({
+          nomUtilisateur,
+          email,
+          motDePasse: hashedPassword,
+          role: 'client' // Default
+      });
+      await utilisateur.save();
+      const token = jwt.sign(
+          { utilisateurId: utilisateur._id, role: utilisateur.role },
+          'your_jwt_secret',
+          { expiresIn: '1h' }
+      );
+      res.status(201).json({ message: 'Utilisateur created!', token, user: { _id: utilisateur._id, nomUtilisateur: utilisateur.nomUtilisateur, email: utilisateur.email, role: utilisateur.role } });
   } catch (error) {
-    if (error.name === 'ValidationError') {
-      res.status(400).json({ error: error.message });
-    } else {
-      res.status(500).json({ error: 'Une erreur est survenue lors de la création du compte.' });
-    }
+      if (error.name === 'ValidationError') {
+          res.status(400).json({ error: error.message });
+      } else {
+          res.status(500).json({ error: 'Une erreur est survenue lors de la création du compte.' });
+      }
   }
 };
 
@@ -63,15 +63,16 @@ exports.signup = async (req, res) => {
 
 exports.getCurrentUser = async (req, res) => {
   try {
-    const utilisateur = await Utilisateur.findById(req.utilisateurId).select('-motDePasse');
-    if (!utilisateur) {
-      return res.status(404).json({ message: 'Utilisateur not found!' });
-    }
-    res.status(200).json(utilisateur);
+      const utilisateur = await Utilisateur.findById(req.utilisateurData.utilisateurId).select('-motDePasse');
+      if (!utilisateur) {
+          return res.status(404).json({ message: 'Utilisateur not found!' });
+      }
+      res.status(200).json(utilisateur);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+      res.status(500).json({ error: error.message });
   }
 };
+
 
 
 // CRUD operations (only for admin)
