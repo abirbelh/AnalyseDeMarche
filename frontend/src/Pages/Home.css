@@ -12,12 +12,23 @@
   width: 100%;
   text-align: center;
   color: black;
-  font-size: 53px;
-  font-family: 'Inter', sans-serif;
+  font-size: 45px;
+  font-family: 'Aonslie Sans Conc', sans-serif;
   font-style: italic;
   font-weight: 400;
   margin-top: 70px;
   margin-bottom: 30px;
+}
+
+.actualites-container h4 {
+  width: 100%;
+  text-align: center;
+  color:   #4C5C75;
+  font-size: 25px;
+  font-family: 'Aonslie Sans Conc', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+
 }
 
 .actualite-group {
@@ -29,40 +40,41 @@
 .actualite-group > * {
   flex: 1;
   gap: -50px;
-  box-sizing: border-box; /* To include padding and border in the width and height calculations */
-  background: rgb(119, 27, 27); /* You can adjust the styling here */
+  box-sizing: border-box;
+  background: rgb(119, 27, 27);
   border-radius: 5px;
   padding: 15px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Proxima Nova', sans-serif;
 }
-
 
 .actualite-slide {
   padding: 10px;
   box-sizing: border-box;
-  
+  font-family: 'Proxima Nova', sans-serif;
 }
 
 /* Slider Navigation */
 .slick-prev:before, .slick-next:before {
   color: black;
+  font-family: 'Proxima Nova', sans-serif;
 }
 
 /* Slider Dots */
 .slick-dots li button:before {
   color: black;
- 
+  font-family: 'Proxima Nova', sans-serif;
 }
- .intro-container{
+
+.intro-container {
   margin-top: 40px;
- }
+}
 
-
-
- .user-info {
+.user-info {
   display: flex;
   align-items: center;
   margin-left: 20px;
+  font-family: 'Proxima Nova', sans-serif;
 }
 
 .user-info span {
@@ -75,6 +87,7 @@
   color: white;
   text-decoration: none;
   border-radius: 5px;
+  font-family: 'Proxima Nova', sans-serif;
 }
 
 .admin-button:hover {

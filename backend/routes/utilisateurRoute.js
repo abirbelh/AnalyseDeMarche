@@ -13,6 +13,7 @@ router.get('/me', authMiddleware, utilisateurController.getCurrentUser);
 
 // Admin routes
 router.post('/createAdmin', authMiddleware, adminMiddleware, utilisateurController.addAdmin);
+router.post('/addUser', authMiddleware, adminMiddleware, utilisateurController.addUser);
 router.get('/', authMiddleware, adminMiddleware, utilisateurController.getAllUtilisateurs);
 router.get('/:id', authMiddleware, adminMiddleware, utilisateurController.getUtilisateurById);
 router.put('/:id', authMiddleware, adminMiddleware, utilisateurController.updateUtilisateur);

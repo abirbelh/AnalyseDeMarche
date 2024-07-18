@@ -93,6 +93,26 @@ exports.addAdmin = async(req, res) =>{
   }
 }
 
+exports.addUser = async (req, res) => {
+  try {
+    const { nomUtilisateur, email, motDePasse } = req.body;
+    const hashedPassword = await bcrypt.hash(motDePasse, 10);
+    const user = new Utilisateur({
+      nomUtilisateur,
+      email,
+      motDePasse: hashedPassword,
+      role: 'client' // Default
+    });
+    await user.save();
+    res.status(201).json({ message: 'User created!', user });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+
+
 exports.getAllUtilisateurs = async (req, res) => {
   try {
     const utilisateurs = await Utilisateur.find();

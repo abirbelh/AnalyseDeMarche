@@ -3,6 +3,7 @@ import './Header.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from './logo-talan.png';
+import hello from './hello.png';
 
 const Header = () => {
     const [user, setUser] = useState(null);
@@ -29,6 +30,12 @@ const Header = () => {
         fetchUserInfo();
     }, [navigate]);
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setUser(null);
+        navigate('/login'); // Navigate to login page after logout
+    };
+
     return (
         <div id="header-wrapper">
             <div id="header" className="container">
@@ -37,28 +44,31 @@ const Header = () => {
                     <ul>
                         <li><Link to="/">Accueil</Link></li>
                         <li><Link to="/visualisation">Dashboard</Link></li>
-                        {user ? (
-                            <>
-                                <li>Bienvenue, {user.nomUtilisateur}</li>
-                                {user.role === 'admin' && (
-                                    <li><Link to="/admin">Admin Panel</Link></li>
-                                )}
-                            </>
-                        ) : (
-                            <li className="active"><Link to="/login">Connexion</Link></li>
+                        {user && user.role === 'admin' && (
+                            <li><Link to="/admin">Admin Panel</Link></li>
                         )}
+                        <li className="active">
+                            {user ? (
+                                <button id='deconnexion' onClick={handleLogout}><span>Déconnexion</span></button>
+                            ) : (
+                                <Link to="/login">Connexion</Link>
+                            )}
+                        </li>
                     </ul>
                 </div>
             </div>
             <div id="banner-wrapper">
                 <div id="banner" className="container">
-                    <div className="title">
+                    {user && (
+                        <div className="welcome">
+                            <img src={hello} alt="Icon" className="icon" />
+                            Bienvenue, {user.nomUtilisateur}
+                        </div>
+                    )}
+                    <div className="titles">
                         <h2>Votre Guide Pour Les Entreprises Françaises et L'analyse du Marché</h2>
                         <span className="byline">Façonnez demain en comprenant aujourd'hui</span>
                     </div>
-                    <ul className="actions">
-                        <li><Link to="/model" className="button">Explorez Notre Modèle IA</Link></li>
-                    </ul>
                 </div>
             </div>
         </div>

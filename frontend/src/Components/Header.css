@@ -1,8 +1,5 @@
+/* Reset and base styles */
 
-h1, h2, h3 {
-    margin: 0;
-    padding: 0;
-}
 
 p, ol, ul {
     margin-top: 0;
@@ -25,13 +22,13 @@ a:hover {
     text-decoration: none;
 }
 
+/* General container */
 .container {
     overflow: hidden;
-    margin: 0em auto;
-   
+    margin: 0 auto;
 }
 
-/* Image Styles */
+/* Image styles */
 .image {
     display: inline-block;
 }
@@ -62,14 +59,13 @@ a:hover {
     width: auto;
 }
 
-/* List Styles */
+/* List styles */
 ul.actions li {
     display: inline-block;
     padding: 0em 0.50em;
 }
 
-
-/* Button Style */
+/* Button styles */
 .button {
     display: inline-block;
     padding: 1.40em 3em;
@@ -85,47 +81,48 @@ ul.actions li {
 
 .button-alt {
     padding: 1em 2em;
-    border-color: rgba(0.1,0.2,0,.8);
+    border-color: rgba(0.1, 0.2, 0, .8);
 }
+
 .button:hover {
-    background: transparent; /* Make background transparent */
-    color: #f3cc2f; /* Ensure text color is still visible */
-    border: 2px solid #b6b1b0; /* Add border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    background: transparent;
+    color: #f3cc2f;
+    border: 2px solid #b6b1b0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-size: 2em;
 }
 
-
-/* Heading Titles */
-.title {
+/* Title and byline styles */
+.titles {
     margin-bottom: 3em;
+    
 }
 
-.title h2 {
+.titles h2 {
     font-size: 2.7em;
     color: white;
 }
 
-.title .byline {
-    font-size: 1.3em;
-    color: rgba(255,255,255,0.60);
+.titles .byline {
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.60);
 }
 
-/* Wrapper */
+/* Wrapper styles */
 #wrapper {
     position: relative;
     padding: 5em 0em 7em 0em;
     background: #FFF;
 }
 
-/* Header */
+/* Header wrapper styles */
 #header-wrapper {
     position: relative;
     padding: 5em 0em 0em 0em;
     background: #111111 url(pic1.jpg) no-repeat center;
     background-size: cover;
     width: 100%;
-    height: auto;
+    height: 830px;
 }
 
 #header {
@@ -133,7 +130,7 @@ ul.actions li {
     padding: 5em 0em 10em 0em;
 }
 
-/* Logo */
+/* Logo styles */
 #logo {
     position: absolute;
     top: 3.6em;
@@ -142,66 +139,60 @@ ul.actions li {
     width: 140px;
 }
 
-
-
-
-/* Menu */
-#menu{
+/* Menu styles */
+#menu {
     position: absolute;
-   margin-top: -74px;
-   margin-left: 560px;
-   display: flex;
-   flex-direction: column;
-   width: 2000px;
-   
-  }
-  
-  #menu ul {
+    margin-top: -84px;
+    margin-left: 644px;
+    display: flex;
+    flex-direction: column;
+    width: 2000px;
+}
+
+#menu ul {
     display: inline-block;
-   
-  }
-  
-  #menu li {
+    font-family: 'Aonslie Sans Conc', sans-serif;
+}
+
+#menu li {
     display: block;
     float: left;
     text-align: center;
-   
-  }
-  
-  #menu li a, #menu li span {
+}
+
+#menu li a,
+#menu li span {
     padding: 1em 1.5em;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.8em;
     color: black;
-  }
-  
-  #menu .active a {
+}
+
+#menu .active a {
     background: #f3cc2f;
     border-radius: 6px;
-    color: rgba(255,255,255,1);
     color: #3f0900;
-  }
-  #menu ul li a:hover {
-    text-decoration: underline; 
-    transition: color 0.3s;
-  }
-  
+}
 
+#menu ul li a:hover {
+    text-decoration: underline;
+    transition: color 0.3s;}
 
-/* Banner */
+/* Banner styles */
 #banner-wrapper {
     padding: 4em 0em;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 #banner {
     text-align: center;
 }
 
-#banner .title h2 {
+#banner .titles h2 {
     font-size: 4em;
+    color: white;
 }
 
 #banner .title .byline {
@@ -220,5 +211,41 @@ ul.actions li {
     margin-bottom: 5em;
 }
 
+/* Déconnexion button specific styles */
+#deconnexion {
+    margin-left: 10px;
+    height: 41px;
+    margin-top: -15px;
+    width: 128px;
+    background-color: #f3cc2f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+#deconnexion span {
+    margin-left: -3px;
+    margin-top: -20px;
+}
+#deconnexion:hover {
+    text-decoration: underline;
+    color: black; /* Optional: Change text color on hover */
+    transition: color 0.3s;
+}
 
 
+/* Welcome message */
+.welcome {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.icon {
+    width: 25px; /* Adjust size as needed */
+    height: 25px; /* Adjust size as needed */
+    margin-right: 10px; /* Adjust spacing between icon and text */
+    margin-bottom: -5px;
+}

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './GestionUser.css';
+import { useNavigate } from 'react-router-dom';
 
 const GestionUser = () => {
     const [users, setUsers] = useState([]);
     const [showForm, setShowForm] = useState(false);
-    const [newUser, setNewUser] = useState({ username: '', email: '', password: '' });
+    const [newUser, setNewUser] = useState({ nomUtilisateur: '', email: '', motDePasse: '' });
+    const navigate = useNavigate();
 
     useEffect(() => {
         getUsers();
@@ -13,40 +15,83 @@ const GestionUser = () => {
 
     const getUsers = async () => {
         try {
-            const response = await axios.get('/api/utilisateurs');
+            const token = localStorage.getItem('token');
+            const response = await axios.get('/api/utilisateurs/', {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching users:', error);
+            if (error.response && error.response.status === 401) {
+                localStorage.removeItem('token');
+                navigate('/login');
+            }
         }
     };
 
     const deleteUser = async (id) => {
         if (window.confirm("Are you sure you want to delete this user?")) {
             try {
-                await axios.delete(`/api/utilisateurs/${id}`);
+                const token = localStorage.getItem('token');
+                await axios.delete(`/api/utilisateurs/${id}`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
                 setUsers(users.filter(user => user._id !== id));
                 console.log('User deleted successfully!');
             } catch (error) {
                 console.error('Error deleting user:', error);
+                if (error.response && error.response.status === 401) {
+                    localStorage.removeItem('token');
+                    navigate('/login');
+                }
             }
         }
     };
 
     const addUser = async (e) => {
         e.preventDefault();
-        if (newUser.username && newUser.email && newUser.password) {
-            try {
-                const response = await axios.post('/api/utilisateurs/signup', newUser);
-                setUsers([...users, response.data.user]);
-                setNewUser({ username: '', email: '', password: '' });
-                setShowForm(false);
-                console.log('User added successfully!');
-            } catch (error) {
-                console.error('Error adding user:', error);
+        if (newUser.nomUtilisateur && newUser.email && newUser.motDePasse) {
+          try {
+            const token = localStorage.getItem('token');
+            const response = await axios.post('/api/utilisateurs/addUser', newUser, {
+              headers: { Authorization: `Bearer ${token}` }
+            });
+      
+            // Assuming response.data directly contains the new user object
+            const newUserResponse = response.data.user; // Adjust according to your backend response structure
+      
+            // Update users state with the new user
+            setUsers([...users, newUserResponse]);
+      
+            // Clear the newUser state
+            setNewUser({ nomUtilisateur: '', email: '', motDePasse: '' });
+      
+            // Hide the form
+            setShowForm(false);
+      
+            console.log('User added successfully!');
+          } catch (error) {
+            console.error('Error adding user:', error);
+            if (error.response) {
+              if (error.response.status === 409) {
+                alert('User with this nomUtilisateur or email already exists.');
+              } else if (error.response.status === 401) {
+                localStorage.removeItem('token');
+                navigate('/login');
+              } else if (error.response.status === 500 && error.response.data.error.includes('duplicate key error')) {
+                alert('User with this email already exists.'); // Specific message for duplicate email
+              } else {
+                console.error('Response data:', error.response.data);
+                console.error('Response status:', error.response.status);
+                console.error('Response headers:', error.response.headers);
+              }
             }
+          }
         }
-    };
-
+      };
+      
+      
+      
     const goBack = () => {
         setShowForm(false);
     };
@@ -64,8 +109,8 @@ const GestionUser = () => {
                         <input
                             type="text"
                             placeholder="Nom d'utilisateur"
-                            value={newUser.username}
-                            onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                            value={newUser.nomUtilisateur}
+                            onChange={(e) => setNewUser({ ...newUser, nomUtilisateur: e.target.value })}
                         />
                         <input
                             type="email"
@@ -77,7 +122,7 @@ const GestionUser = () => {
                             type="password"
                             placeholder="Mot de passe"
                             value={newUser.password}
-                            onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                            onChange={(e) => setNewUser({ ...newUser, motDePasse: e.target.value })}
                         />
                         <div className="form-buttons">
                             <button type="submit" className="submit-btn">Ajouter</button>

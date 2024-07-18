@@ -6,13 +6,13 @@
   padding-right: 10px;
 }
 
-h2 {
+.container h2 {
   margin: 20px 0;
   text-align: center;
   font-size: 40px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #213C55;
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 .responsive-table li {
