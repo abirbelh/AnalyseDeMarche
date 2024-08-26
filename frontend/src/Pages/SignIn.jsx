@@ -13,6 +13,7 @@ function SignIn() {
           <ul>
             <li><Link to="/">Acceuil</Link></li>                                                          
             <li><Link to="/visualisation" >Dashbord</Link></li>
+            <li><Link to="/ListeEntreprises">Entreprises</Link></li>
             <li className="active2"><Link to="/login">Connexion</Link></li>
           </ul>
         </div>

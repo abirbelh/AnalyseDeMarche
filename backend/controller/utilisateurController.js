@@ -71,7 +71,7 @@ exports.getCurrentUser = async (req, res) => {
   } catch (error) {
       res.status(500).json({ error: error.message });
   }
-};
+}; 
 
 
 
@@ -163,3 +163,45 @@ exports.deleteUtilisateur = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+exports.updateUtilisateur = async (req, res) => {
+  try {
+    const { nomUtilisateur, email, motDePasse } = req.body;
+
+    // Log incoming data for debugging
+    console.log('Received data:', req.body);
+
+    // Use the ID from the token if the user is updating their own profile
+    const utilisateurId = req.params.id || req.utilisateurData.utilisateurId;
+    const currentUser = req.utilisateurData.utilisateurId;
+
+    // Only allow the user to update their own profile, unless they are an admin
+    if (currentUser !== utilisateurId && req.utilisateurData.role !== 'admin') {
+      return res.status(403).json({ message: 'Unauthorized to update this user!' });
+    }
+
+    // Hash the password if it's provided
+    if (motDePasse) {
+      const hashedPassword = await bcrypt.hash(motDePasse, 10);
+      req.body.motDePasse = hashedPassword;
+    } else {
+      // Avoid setting `motDePasse` to `undefined` or `null`
+      delete req.body.motDePasse;
+    }
+
+    console.log('Updated data before saving:', req.body);
+
+    // Find the user by ID and update
+    const utilisateur = await Utilisateur.findByIdAndUpdate(utilisateurId, req.body, { new: true });
+    if (!utilisateur) {
+      return res.status(404).json({ message: 'Utilisateur not found!' });
+    }
+
+    res.status(200).json(utilisateur);
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+

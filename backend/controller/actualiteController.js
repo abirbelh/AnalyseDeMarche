@@ -10,22 +10,23 @@ exports.createActualite = async (req, res) => {
 
         const { title, content } = req.body;
 
-        if (!req.file) {
-            return res.status(400).send({ message: 'No files were uploaded.' });
-        }
-
-        const file = req.file;  // Access uploaded file from req.file
-
+        // Create a new object for actualité
         const newActualite = new Actualite({
             title,
-            content,
-            file: {
+            content
+        });
+
+        // If a file is uploaded, add it to the newActualite object
+        if (req.file) {
+            const file = req.file;
+            newActualite.file = {
                 data: file.buffer,         // Store binary data of the file
                 contentType: file.mimetype,  // Store MIME type of the file
                 filename: file.originalname  // Store original filename
-            }
-        });
+            };
+        }
 
+        // Save the actualité
         await newActualite.save();
         res.status(201).json(newActualite);
     } catch (err) {
@@ -33,7 +34,6 @@ exports.createActualite = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
-
 
 
 // Get all actualites

@@ -10,6 +10,8 @@ router.post('/login', utilisateurController.login);
 
 // Protected route for the user
 router.get('/me', authMiddleware, utilisateurController.getCurrentUser);
+// Allow authenticated users to update their own profile
+router.put('/me', authMiddleware, utilisateurController.updateUtilisateur);
 
 // Admin routes
 router.post('/createAdmin', authMiddleware, adminMiddleware, utilisateurController.addAdmin);

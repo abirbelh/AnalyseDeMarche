@@ -15,6 +15,10 @@ import GestionAdmin from './Pages/AdminPages/GestionAdmin';
 import GestionUser from './Pages/AdminPages/GestionUser';
 import Admin from './Pages/AdminPages/Admin';
 import Index from './Components/Index';
+import ListeEntreprises from './Pages/ListeEntreprises';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import Footer from './Components/Footer';
+import ProfileManagement from './Pages/ProfileManagement';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -55,8 +59,10 @@ function App() {
           <Route path="/visualization" element={<ProtectedRoute><Visualization /></ProtectedRoute>} />
           <Route path="/login" element={<Connexion setUser={setUser} />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/ListeEntreprises" element={<ProtectedRoute><ListeEntreprises /></ProtectedRoute>} />
           <Route path="/model" element={<ProtectedRoute><AIModel /></ProtectedRoute>} />
           <Route path="/index" element={<ProtectedRoute><Index /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProfileManagement />} />
           <Route path="/*" element={<Error />} />
           <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
           <Route 

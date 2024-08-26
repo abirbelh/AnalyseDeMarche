@@ -1,74 +1,113 @@
 /* Home.css */
 
 .actualites-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background-color: #f5f5f5;
-  height: 900px;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .actualites-container h2 {
-  width: 100%;
   text-align: center;
-  color: black;
+  color: #333;
   font-size: 45px;
   font-family: 'Aonslie Sans Conc', sans-serif;
   font-style: italic;
-  font-weight: 400;
-  margin-top: 70px;
-  margin-bottom: 30px;
-}
-
-.actualites-container h4 {
-  width: 100%;
-  text-align: center;
-  color:   #4C5C75;
-  font-size: 25px;
-  font-family: 'Aonslie Sans Conc', sans-serif;
-  font-style: italic;
-  font-weight: 400;
-
-}
-
-.actualite-group {
-  display: flex;
-  justify-content: space-around;
+  font-weight: 600;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
-.actualite-group > * {
-  flex: 1;
-  gap: -50px;
-  box-sizing: border-box;
-  background: rgb(119, 27, 27);
+.actualites-container h4 {
+  text-align: center;
+  color: #6c757d;
+  font-size: 22px;
+  font-family: 'Aonslie Sans Conc', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.actualites-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.actualite-card {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.actualite-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.actualite-date {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.actualite-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 26px;
+  color: #333;
+  font-weight: 600;
+}
+
+.actualite-card p {
+  font-size: 16px;
+  color: #495057;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.download-button {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
   border-radius: 5px;
-  padding: 15px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  font-family: 'Proxima Nova', sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.actualite-slide {
-  padding: 10px;
-  box-sizing: border-box;
-  font-family: 'Proxima Nova', sans-serif;
+.download-button:hover {
+  background-color: #0056b3;
 }
 
-/* Slider Navigation */
-.slick-prev:before, .slick-next:before {
-  color: black;
-  font-family: 'Proxima Nova', sans-serif;
+.download-button i {
+  margin-right: 5px;
 }
 
-/* Slider Dots */
-.slick-dots li button:before {
-  color: black;
-  font-family: 'Proxima Nova', sans-serif;
+
+
+.read-more {
+  color: #007bff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.share-icons i {
+  margin-left: 10px;
+  color: #6c757d;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.share-icons i:hover {
+  color: #007bff;
 }
 
 .intro-container {
   margin-top: 40px;
-}
+} 
 
 .user-info {
   display: flex;

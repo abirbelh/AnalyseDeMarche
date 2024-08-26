@@ -5,6 +5,8 @@ import axios from 'axios';
 import logo from './logo-talan.png';
 import hello from './hello.png';
 
+ 
+
 const Header = () => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
@@ -12,6 +14,7 @@ const Header = () => {
     useEffect(() => {
         const fetchUserInfo = async () => {
             const token = localStorage.getItem('token');
+            console.log('Retrieved Token:', token);
             if (token) {
                 try {
                     const response = await axios.get('http://localhost:3001/api/utilisateurs/me', {
@@ -44,12 +47,18 @@ const Header = () => {
                     <ul>
                         <li><Link to="/">Accueil</Link></li>
                         <li><Link to="/visualisation">Dashboard</Link></li>
+                        <li><Link to="/ListeEntreprises">Entreprises</Link></li>
+                        
                         {user && user.role === 'admin' && (
                             <li><Link to="/admin">Admin Panel</Link></li>
                         )}
                         <li className="active">
                             {user ? (
-                                <button id='deconnexion' onClick={handleLogout}><span>Déconnexion</span></button>
+                               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                               <button id='deconnexion' onClick={handleLogout}><span>Déconnexion</span></button> 
+                               <button id='deconnexion' title='gestion du profile'  onClick={() => navigate('/profile')} >Profil</button>      
+                             </div>
+                                
                             ) : (
                                 <Link to="/login">Connexion</Link>
                             )}

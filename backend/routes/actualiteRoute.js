@@ -3,7 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const actualiteController = require('../controller/actualiteController');
-const multer = require('multer');
+const Actualite = require('../models/actualiteModel');
+const multer = require('multer'); 
 const upload = multer({ storage: multer.memoryStorage() });
 const authMiddleware = require('../middleware/authMiddleware');
 const adminMiddleware = require('../middleware/adminMiddleware');
@@ -23,6 +24,24 @@ router.put('/:id', upload.single('file'),authMiddleware, adminMiddleware,  actua
 
 // DELETE /api/actualites/:id - Delete an actualite by ID
 router.delete('/:id',authMiddleware, adminMiddleware,  actualiteController.deleteActualite);
+
+// Route to download a file
+router.get('/:id/download', async (req, res) => {
+    try {
+        const actualite = await Actualite.findById(req.params.id);
+
+        if (!actualite || !actualite.file) {
+            return res.status(404).send('File not found');
+        }
+
+        res.setHeader('Content-Type', actualite.file.contentType);
+        res.setHeader('Content-Disposition', `attachment; filename="${actualite.file.filename}"`);
+        res.send(actualite.file.data);
+    } catch (error) {
+        console.error('Error downloading file:', error);
+        res.status(500).send('Error downloading file');
+    }
+});
 
 module.exports = router;
 

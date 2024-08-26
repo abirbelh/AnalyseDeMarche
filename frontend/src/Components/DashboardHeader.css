@@ -94,8 +94,7 @@ ul.actions li {
 
 /* Title and byline styles */
 .titles {
-    margin-bottom: 3em;
-    
+    margin-bottom: 3em;   
 }
 
 .titles h2 {
@@ -108,26 +107,22 @@ ul.actions li {
     color: rgba(255, 255, 255, 0.60);
 }
 
-/* Wrapper styles */
-#wrapper {
-    position: relative;
-    padding: 5em 0em 7em 0em;
-    background: #FFF;
-}
 
 /* Header wrapper styles */
-#header-wrapper {
+#headerWrapper {
     position: relative;
     padding: 0;
     background: #111111 url(pic1.jpg) no-repeat center;
     background-size: cover;
     width: 100%;
-    height: 830px;
+    height: 200px;
+    overflow: hidden;
 }
+
 
 #header {
     position: relative;
-    padding: 0em 0em 10em 0em;
+    padding: 5em 0em 0em 0em;
 }
 
 /* Logo styles */
@@ -140,7 +135,7 @@ ul.actions li {
 }
 
 /* Menu styles */
-#menu {
+#menuu {
     position: absolute;
     margin-top: -84px;
     margin-left: 300px;
@@ -149,19 +144,19 @@ ul.actions li {
     width: 2000px;
 }
 
-#menu ul {
+#menuu ul {
     display: inline-block;
     font-family: 'Aonslie Sans Conc', sans-serif;
 }
 
-#menu li {
+#menuu li {
     display: block;
     float: left;
     text-align: center;
 }
 
-#menu li a,
-#menu li span {
+#menuu li a,
+#menuu li span {
     padding: 1em 1.5em;
     letter-spacing: 1px;
     text-decoration: none;
@@ -170,69 +165,35 @@ ul.actions li {
     color: black;
 }
 
-#menu .active a {
+#menuu .active a {
     background: #f3cc2f;
     border-radius: 6px;
     color: #3f0900;
 }
 
-#menu ul li a:hover {
+#menuu ul li a:hover {
     text-decoration: underline;
-    transition: color 0.3s;
-}
+    transition: color 0.3s;}
 
-/* Banner styles */
-#banner-wrapper {
-    position: absolute;
-    top: 9em; /* Place it at the top */
-    left: 0;
-    right: 0;
-    padding: 4em 0em;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-#banner {
-    text-align: center;
-}
-
-#banner .titles h2 {
-    font-size: 4em;
-    color: white;
-}
-
-#banner .title .byline {
-    font-size: 2em;
-}
-
-#banner .button {
-    margin-top: 2em;
-    padding: 1.40em 3em;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 1em;
-}
-
-.banner {
-    margin-bottom: 5em;
-}
 
 /* Déconnexion button specific styles */
 #deconnexion {
     margin-left: 10px;
     height: 41px;
     margin-top: -15px;
-    width: 128px;
+    width: 118px;
     background-color: #f3cc2f;
     color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 0.8em;
-    display: inline-block; /* Ensure the button is inline */
 }
 
-
+#deconnexion span {
+    margin-left: -3px;
+    margin-top: -20px;
+}
 #deconnexion:hover {
     text-decoration: underline;
     color: black; /* Optional: Change text color on hover */
@@ -254,25 +215,12 @@ ul.actions li {
     margin-bottom: -5px;
 }
 
-
-/*settings button*/
-#settings {
-    margin-left: 10px; /* Adjust spacing between buttons */
-    height: 41px;
-    width: 41px;
-    background-color: #f3cc2f;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%; /* Make the button circular */
-    display: inline-flex; /* Make it inline with other elements */
-    align-items: center;
-    justify-content: center;
-}
-
-#settings:hover {
-    text-decoration: underline;
-    color: black;
-    transition: color 0.3s;
+.dashboard-content {
+    position: relative;
+    margin-top: -150px; /* Adjust this to overlap more or less with the header */
+    background-color: white;
+    padding: 2em;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
 }
 

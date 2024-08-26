@@ -3,9 +3,11 @@ import './Connexion.css';
 import { Link } from 'react-router-dom';
 import logo from './logo-talan.png';
 import Form from '../Components/Form';
+import Footer from '../Components/Footer';
 
 const Connexion = () => {
     return (
+        <div>
         <div id="header-wrapper2">
             <div id="header2" className="container2">
                 <a href="/"><img src={logo} alt="Logo" id='logo2'/></a>
@@ -13,6 +15,7 @@ const Connexion = () => {
                     <ul>
                         <li><Link to="/">Accueil</Link></li>
                         <li><Link to="/visualisation">Dashboard</Link></li>
+                        <li><Link to="/ListeEntreprises">Entreprises</Link></li>
                     </ul>
                 </div>
             </div>
@@ -30,6 +33,8 @@ const Connexion = () => {
                 </div>
             </div>
         </div>
+        <Footer />
+      </div>  
     );
 }
 

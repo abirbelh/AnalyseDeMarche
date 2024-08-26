@@ -1,0 +1,94 @@
+.profile-management-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .profile-background {
+    background-image: url('./pic1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 50px 0;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    color: #333 !important;
+    background-color: #fff; /* Ensure background is white */
+  }
+  
+  .profile-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .update-btn, .home-btn {
+    background-color: #f3cc2f;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px; 
+    margin-top: 0; 
+  }
+  
+  .update-btn:hover, .home-btn:hover {
+    background-color: #dfb200;
+  }
+
+
+.error {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .success {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+.ProfilForm {
+    height: 600px;
+    width: 670px;
+    background-color: rgba(255, 255, 255, 0.13);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
+    margin-top: 50px;
+}
+  

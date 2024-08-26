@@ -18,6 +18,8 @@ import GestionAdmin from './Pages/AdminPages/GestionAdmin.jsx';
 import GestionUser from './Pages/AdminPages/GestionUser.jsx';
 import Admin from './Pages/AdminPages/Admin.jsx';
 import Index from './Components/Index.jsx';
+import ListeEntreprises from './Pages/ListeEntreprises.jsx';
+import ProfileManagement from './Pages/ProfileManagement.jsx';
 
 
 
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
   {
     path: "/signin",
     element: <SignIn/>
+  },
+  {
+    path: "/profile",
+    element: <ProfileManagement />
+  },
+  {
+    path: "/ListeEntreprises",
+    element: <ListeEntreprises/>
   },
   {
     path: "/admin/gestion/actualité",

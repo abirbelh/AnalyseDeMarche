@@ -1,23 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import Slider from 'react-slick';
 import Header from '../Components/Header';
 import Intro from '../Components/Intro';
 import RESSL from '../Components/RESSL';
 import RESSR from '../Components/RESSR';
-import ListeActualite from '../Components/Admin/ListeActualité';
 import ScrollReveal from '../Components/ScrollReveal';
 import './Home.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Footer from '../Components/Footer';
 
 function Home() {
     const [actualites, setActualites] = useState([]);
+    const location = useLocation();
 
     useEffect(() => {
         fetchActualites();
-    }, []);
+
+        // Scroll to the section if there's a hash in the URL
+        if (location.hash) {
+            const element = document.querySelector(location.hash);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+    }, [location]);
 
     const fetchActualites = async () => {
         try {
@@ -28,32 +38,6 @@ function Home() {
         }
     };
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-
     return (
         <div className="home-container">
             <ScrollReveal>
@@ -61,33 +45,38 @@ function Home() {
                     <Header />
                 </div>
             </ScrollReveal>
-
             <ScrollReveal>
-                <div className='intro-container'>
+                <div className='intro-container' id="intro">
                     <Intro />
                 </div>
             </ScrollReveal>
 
             <ScrollReveal>
-                <div className="actualites-container">
+                <div className="actualites-container" id="actualites">
                     <h2>ACTUALITÉS ET ARTICLES</h2>
                     <h4>Toujours à jour avec nos dernières actualités et articles</h4>
-                    <Slider {...settings}>
+                    <div className="actualites-list">
                         {actualites.map((actualite, index) => (
-                            <div key={index} className="actualite-slide">
-                                <ListeActualite
-                                    actualites={[actualite]}
-                                    showDeleteButton={false}
-                                    isHomePage={true}
-                                />
+                            <div key={index} className="actualite-card">
+                                <div className="actualite-date">{new Date(actualite.createdAt).toLocaleDateString()}</div>
+                                <h3>{actualite.title}</h3>
+                                <p>{actualite.content}</p>
+                                {actualite.file && actualite.file.filename && (
+                                    <a
+                                        href={`http://localhost:3001/api/actualites/${actualite._id}/download`}
+                                        download
+                                        className="download-button"
+                                    >
+                                        <i className="fas fa-download"></i> {actualite.file.filename}
+                                    </a>
+                                )}
                             </div>
                         ))}
-                    </Slider>
+                    </div>
                 </div>
             </ScrollReveal>
-
             <div className="Line"></div>
-            <div className='ressources'>
+            <div className='ressources' id="ressources">
                 <ScrollReveal>
                     <div className="ressourcel-container">
                         <RESSL />
@@ -100,6 +89,7 @@ function Home() {
                     </div>
                 </ScrollReveal>
             </div>
+            <Footer />
         </div>
     );
 }

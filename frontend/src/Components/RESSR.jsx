@@ -1,27 +1,23 @@
 import React from 'react';
 import './RESSR.css';
-import alpha from './khir 1.png'
-
-
+import alpha from './images.png';
 
 function RESSR() {
     return (
         <div>
-
-
             <div className="Rectangle6">
                 <div className="content">
                     <img className="Khir1" src={alpha} alt="Alpha Vantage" />
                     <div className="text-container">
-                        <div className="SiteWebAlphaVintage">Site Web Alpha Vintage</div>
+                        <div className="SiteWebAlphaVintage">companies market cap</div>
                         <div className="AlphaVantageDescription">
-                            Alpha Vantage fournit des données de marché financières en temps réel et historiques via un ensemble d'API puissantes et conviviales pour les développeurs, ainsi que des feuilles de calcul. Des classes d'actifs traditionnelles (par exemple, actions, ETF, fonds communs de placement) aux indicateurs économiques, des taux de change aux matières premières, des données fondamentales aux indicateurs techniques, Alpha Vantage est votre guichet unique pour des données de marché mondiales de qualité entreprise, livrées via des API basées sur le cloud, Excel et Google Sheets.
+                        Companies Market Cap est une plateforme dédiée à la fourniture d'informations complètes sur la capitalisation boursière des entreprises à l'échelle mondiale. Ce site permet aux investisseurs, analystes financiers et passionnés de finance de consulter et d'analyser les valeurs totales des entreprises cotées en bourse. En calculant la capitalisation boursière, qui est le produit du prix de l'action par le nombre total d'actions en circulation, le site offre une vue d'ensemble précise de la taille et de l'importance des entreprises sur le marché financier.
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }
+
 export default RESSR;

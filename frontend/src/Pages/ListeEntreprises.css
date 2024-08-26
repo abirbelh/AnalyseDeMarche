@@ -1,0 +1,144 @@
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: calc(100vh - 40px)
+}
+
+.container {
+    margin-bottom: 10px;
+    min-height: 500px; 
+}
+
+.content-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.stats-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    max-width: 400px;
+
+}
+
+.filter-container {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+
+.search-bar {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000 !important;
+    background-color: #fff;
+}
+
+.search-bar::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+.sector-filter {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.sector-filter-container {
+    display: flex;
+    align-items: center;
+    margin-right: 152px;
+}
+
+.sector-filter-container label {
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 20px 0;
+}
+
+.enterprise-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.enterprise-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.enterprise-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.enterprise-number {
+    font-weight: bold;
+    margin-right: 15px;
+    color: #007bff;
+}
+
+.enterprise-name {
+    flex-grow: 1;
+}
+
+.enterprise-sector {
+    color: #666;
+    font-style: italic;
+}
